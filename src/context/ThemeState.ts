@@ -13,6 +13,7 @@ export const reducer = (state: State, action: Action) => {
         isDark: action.storage,
       };
     case "toggle":
+      localStorage.setItem("theme", String(!state.isDark));
       return {
         isDark: !state.isDark,
       };
