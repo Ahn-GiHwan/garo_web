@@ -30,12 +30,16 @@ const Title = styled.h1`
   font-size: 40px;
   font-weight: bold;
   color: ${({ theme }) => theme.color};
+  @media screen and (max-width: 450px) {
+    font-size: 30px;
+  }
 `;
 
 const NavIcons = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  width: 30%;
+`;
+const Empty = styled.div`
+  width: 20px;
 `;
 
 function Home() {
@@ -45,6 +49,7 @@ function Home() {
         <Title>가로 휴지통</Title>
         <NavIcons>
           <MapButton />
+          <Empty />
           <ChartButton />
         </NavIcons>
         <ExcelButton />
