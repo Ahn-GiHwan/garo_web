@@ -16,7 +16,7 @@ const ChartBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: "100%";
+  width: 100%;
 `;
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
