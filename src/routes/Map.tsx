@@ -4,7 +4,6 @@ import { useQuery } from "react-query";
 import { getBoroughListFetch } from "../APIs/map";
 import Loading from "../components/common/Loading";
 import LeftMenu from "../components/Map/LeftMenu";
-import ThemeToggleButton from "../components/ThemeToggleButton";
 import NaverMap from "../components/Map/NaverMap";
 
 const Container = styled.main`
@@ -41,7 +40,6 @@ function Map() {
       <Container>
         <LeftMenu data={data} />
         <NaverMap />
-        <ThemeToggleButton />
       </Container>
     );
 }
