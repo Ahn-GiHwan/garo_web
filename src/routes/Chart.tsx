@@ -1,10 +1,22 @@
 import React, { useCallback } from "react";
+import styled from "styled-components";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { getBoroughListFetch, getCountByBoroughFetch } from "../APIs/chart";
 import BarChart from "../components/Chart/BarChart";
 import BoroughList from "../components/Chart/BoroughList";
 import Loading from "../components/common/Loading";
+import LeftMenu from "../components/Map/LeftMenu";
+
+const Container = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+`;
+
+const ChartInfo = styled.div``;
 
 function Chart() {
   const { isLoading: boroughListDataLoading, data: boroughs } = useQuery(
@@ -25,10 +37,13 @@ function Chart() {
   if (chartDataLoading || boroughListDataLoading) return <Loading />;
   else
     return (
-      <div>
-        <BoroughList borough={borough} boroughs={boroughs} onSelectBorough={onSelectBorough} />
-        <BarChart chartData={chartData} />
-      </div>
+      <Container>
+        <LeftMenu />
+        <ChartInfo>
+          <BoroughList borough={borough} boroughs={boroughs} onSelectBorough={onSelectBorough} />
+          <BarChart chartData={chartData} />
+        </ChartInfo>
+      </Container>
     );
 }
 
