@@ -5,12 +5,12 @@ import { BsSun } from "react-icons/bs";
 import { useThemeDispatch, useThemeState } from "../context/ThemeState";
 import { useLocation } from "react-router-dom";
 
-const Button = styled.button<{ location: string }>`
+const Button = styled.button<{ isHome: boolean }>`
   position: absolute;
-  top: ${({ location }) => (location === "/map" ? "auto" : "10px")};
-  right: ${({ location }) => (location === "/map" ? "auto" : "10px")};
-  bottom: ${({ location }) => (location === "/map" ? "20px" : "auto")};
-  left: ${({ location }) => (location === "/map" ? "20px" : "auto")};
+  top: ${({ isHome }) => (isHome ? "10px" : "auto")};
+  right: ${({ isHome }) => (isHome ? "10px" : "auto")};
+  bottom: ${({ isHome }) => (isHome ? "auto" : "20px")};
+  left: ${({ isHome }) => (isHome ? "auto" : "20px")};
   display: flex;
   border: 2px solid ${({ theme }) => theme.color};
   border-radius: 50px;
@@ -27,12 +27,14 @@ function ThemeToggleButton() {
 
   const { pathname } = useLocation();
 
+  const isHome = pathname === "/";
+
   const onToggle = useCallback(() => {
     dispatch({ type: "toggle" });
   }, [dispatch]);
 
   return (
-    <Button location={pathname} onClick={onToggle} aria-label="Theme Toggle Button">
+    <Button isHome={isHome} onClick={onToggle} aria-label="Theme Toggle Button">
       {isDark ? <BsSun color="white" size="18" /> : <IoMdMoon size="18" />}
     </Button>
   );
