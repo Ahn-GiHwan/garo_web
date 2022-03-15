@@ -9,7 +9,7 @@ function HomeButton() {
 
   return (
     <Link to="/" aria-label="Go Map Button">
-      <NavIconButton color="orange">
+      <NavIconButton color="rgb(123, 169, 73)">
         <AiFillHome size="30" color={isDark ? "white" : "black"} />
       </NavIconButton>
     </Link>
