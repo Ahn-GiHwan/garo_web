@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const NavIconButton = styled.div<{ color: string; select?: boolean }>`
   display: flex;
+  justify-content: center;
   border: 3px solid ${({ color }) => color};
   border-radius: 10px;
   padding: 7px 10px;
@@ -11,6 +12,9 @@ export const NavIconButton = styled.div<{ color: string; select?: boolean }>`
   :hover {
     transform: scale(1.1);
     background-color: ${({ color }) => color};
+  }
+  @media screen and (max-width: 450px) {
+    padding: 10px 0px;
   }
 `;
 
