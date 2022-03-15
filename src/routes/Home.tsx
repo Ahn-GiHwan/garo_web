@@ -21,7 +21,7 @@ const Main = styled.section`
   height: 300px;
   padding-top: 80px;
   border-radius: 10px;
-  background-color: #eeeeee;
+  background-color: ${({ theme }) => theme.subBg};
   color: black;
 `;
 
@@ -29,6 +29,7 @@ const Title = styled.h1`
   text-align: center;
   font-size: 40px;
   font-weight: bold;
+  color: ${({ theme }) => theme.color};
 `;
 
 const NavIcons = styled.div`
