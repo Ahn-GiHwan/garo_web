@@ -3,14 +3,11 @@ import styled from "styled-components";
 import { IoMdMoon } from "react-icons/io";
 import { BsSun } from "react-icons/bs";
 import { useThemeDispatch, useThemeState } from "../context/ThemeState";
-import { useLocation } from "react-router-dom";
 
-const Button = styled.button<{ isHome: boolean }>`
+const Button = styled.button`
   position: absolute;
-  top: ${({ isHome }) => (isHome ? "10px" : "auto")};
-  right: ${({ isHome }) => (isHome ? "10px" : "auto")};
-  bottom: ${({ isHome }) => (isHome ? "auto" : "20px")};
-  left: ${({ isHome }) => (isHome ? "auto" : "20px")};
+  bottom: 20px;
+  left: 20px;
   display: flex;
   border: 2px solid ${({ theme }) => theme.color};
   border-radius: 50px;
@@ -25,16 +22,12 @@ function ThemeToggleButton() {
   const { isDark } = useThemeState();
   const dispatch = useThemeDispatch();
 
-  const { pathname } = useLocation();
-
-  const isHome = pathname === "/";
-
   const onToggle = useCallback(() => {
     dispatch({ type: "toggle" });
   }, [dispatch]);
 
   return (
-    <Button isHome={isHome} onClick={onToggle} aria-label="Theme Toggle Button">
+    <Button onClick={onToggle} aria-label="Theme Toggle Button">
       {isDark ? <BsSun color="white" size="18" /> : <IoMdMoon size="18" />}
     </Button>
   );
