@@ -8,7 +8,7 @@ function MapButton() {
   const { isDark } = useThemeState();
 
   return (
-    <Link to="map" aria-label="Go Map Button">
+    <Link to="/map" aria-label="Go Map Button">
       <NavIconButton color="orange">
         <IoMdMap size="30" color={isDark ? "white" : "black"} />
       </NavIconButton>
