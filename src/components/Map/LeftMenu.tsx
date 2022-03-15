@@ -17,6 +17,10 @@ const Container = styled.div<{ isOpen: boolean }>`
   height: 100vh;
   padding: 10px;
   border-right: 5px solid ${({ theme }) => theme.subBg};
+  @media screen and (max-width: 450px) {
+    width: 65px;
+    padding: 3px;
+  }
 `;
 
 const Empty = styled.div`
@@ -36,6 +40,10 @@ const BoroughList = styled.div<{ isOpen: boolean }>`
   background-color: ${({ theme }) => theme.bg};
   transition: 0.1s ease-in-out;
   overflow-y: scroll;
+  @media screen and (max-width: 450px) {
+    width: 120px;
+    left: 57px;
+  }
 `;
 
 const BoroughButton = styled.button`
@@ -53,6 +61,9 @@ const BoroughName = styled.span`
   :hover {
     padding-left: 15px;
     font-weight: bold;
+  }
+  @media screen and (max-width: 450px) {
+    font-size: 14px;
   }
 `;
 
