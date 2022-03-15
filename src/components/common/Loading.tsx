@@ -14,14 +14,15 @@ const Container = styled.article`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100vh;
+  background-color: ${({ theme }) => theme.subBg};
 `;
 
 const Spin = styled.div`
   height: 60px;
   width: 60px;
   border-radius: 50%;
-  border: dashed 5px white;
+  border: dashed 5px ${({ theme }) => theme.color};
   animation: ${spin} 1.5s infinite linear;
 `;
 
