@@ -10,6 +10,7 @@ export const NavIconButton = styled.div<{ color: string; select?: boolean }>`
   cursor: pointer;
   :hover {
     transform: scale(1.1);
+    background-color: ${({ color }) => color};
   }
 `;
 
@@ -22,6 +23,7 @@ export const FileIcons = styled.a.attrs({
   font-size: 12px;
   font-weight: bold;
   transition: 0.2s ease-in-out;
+  color: ${({ theme }) => theme.color};
   :hover {
     transform: scale(1.1);
     text-decoration: underline;
