@@ -3,9 +3,10 @@ import { useState } from "react";
 import styled from "styled-components";
 import ChartButton from "../Buttons/ChartButton";
 import HomeButton from "../Buttons/HomeButton";
-import SearchButton from "../Buttons/SearchButton";
 import ListButton from "../Buttons/ListButton";
 import { useCallback } from "react";
+import { useLocation } from "react-router-dom";
+import MapButton from "../Buttons/MapButton";
 
 const Container = styled.div<{ isOpen: boolean }>`
   position: relative;
@@ -15,7 +16,7 @@ const Container = styled.div<{ isOpen: boolean }>`
   width: 75px;
   height: 100vh;
   padding: 10px;
-  border-right: 5px solid ${({ theme, isOpen }) => (isOpen ? "pink" : theme.color)};
+  border-right: 5px solid ${({ theme }) => theme.subBg};
 `;
 
 const Empty = styled.div`
@@ -30,19 +31,11 @@ const BoroughList = styled.div<{ isOpen: boolean }>`
   left: 75px;
   display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
   display: flex;
-  /* margin-left: ${({ isOpen }) => (isOpen ? 0 : "-250px")}; */
   flex-direction: column;
   width: 170px;
   background-color: ${({ theme }) => theme.bg};
   transition: 0.1s ease-in-out;
   overflow-y: scroll;
-  ::-webkit-scrollbar {
-    width: 3px;
-    background-color: gray;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: pink;
-  }
 `;
 
 const BoroughButton = styled.button`
@@ -68,7 +61,9 @@ type Data = {
   borough: string;
 };
 
-function LeftMenu({ data }: { data: Data[] }) {
+function LeftMenu({ data }: { data?: Data[] }) {
+  const { pathname } = useLocation();
+  const isChart = pathname === "/chart";
   const [isOpen, setIsOpen] = useState(false);
 
   const onListToggle = useCallback(() => {
@@ -79,18 +74,20 @@ function LeftMenu({ data }: { data: Data[] }) {
     <Container isOpen={isOpen}>
       <HomeButton />
       <Empty />
-      <ChartButton />
-      <Empty />
-      <ListButton isOpen={isOpen} onClick={onListToggle} />
-      <Empty />
-      <SearchButton />
-      <BoroughList isOpen={isOpen}>
-        {data.map((item) => (
-          <BoroughButton>
-            <BoroughName key={item.id}>{item.borough}</BoroughName>
-          </BoroughButton>
-        ))}
-      </BoroughList>
+      {isChart ? <MapButton /> : <ChartButton />}
+      {isChart || (
+        <>
+          <Empty />
+          <ListButton isOpen={isOpen} onClick={onListToggle} />
+          <BoroughList isOpen={isOpen}>
+            {data?.map((item) => (
+              <BoroughButton>
+                <BoroughName key={item.id}>{item.borough}</BoroughName>
+              </BoroughButton>
+            ))}
+          </BoroughList>
+        </>
+      )}
     </Container>
   );
 }
