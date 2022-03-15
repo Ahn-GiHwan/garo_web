@@ -14,7 +14,7 @@ export const NavIconButton = styled.div<{ color: string; select?: boolean }>`
     background-color: ${({ color }) => color};
   }
   @media screen and (max-width: 450px) {
-    padding: 10px 0px;
+    padding: 10px 7px;
   }
 `;
 
