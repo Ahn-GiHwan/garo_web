@@ -17,8 +17,8 @@ const Button = styled.button`
     transform: scale(1.2);
   }
   @media screen and (max-width: 450px) {
-    bottom: 11px;
-    left: 11px;
+    bottom: 8px;
+    left: 8px;
   }
 `;
 
