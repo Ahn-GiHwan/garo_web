@@ -18,11 +18,11 @@ const Main = styled.section`
   justify-content: space-around;
   align-items: center;
   width: 80%;
+  max-width: 1440px;
   height: 300px;
   padding-top: 80px;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.subBg};
-  color: black;
 `;
 
 const Title = styled.h1`
