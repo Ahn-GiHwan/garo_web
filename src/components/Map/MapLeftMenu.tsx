@@ -5,8 +5,6 @@ import ChartButton from "../Buttons/ChartButton";
 import HomeButton from "../Buttons/HomeButton";
 import ListButton from "../Buttons/ListButton";
 import { useCallback } from "react";
-import { useLocation } from "react-router-dom";
-import MapButton from "../Buttons/MapButton";
 import ThemeToggleButton from "../ThemeToggleButton";
 
 const Container = styled.div<{ isOpen: boolean }>`
@@ -73,9 +71,7 @@ type Data = {
   borough: string;
 };
 
-function LeftMenu({ data }: { data?: Data[] }) {
-  const { pathname } = useLocation();
-  const isChart = pathname === "/chart";
+function MapLeftMenu({ data, onClickBorough }: { data?: Data[]; onClickBorough: any }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const onListToggle = useCallback(() => {
@@ -86,23 +82,20 @@ function LeftMenu({ data }: { data?: Data[] }) {
     <Container isOpen={isOpen}>
       <HomeButton />
       <Empty />
-      {isChart ? <MapButton /> : <ChartButton />}
-      {isChart || (
-        <>
-          <Empty />
-          <ListButton isOpen={isOpen} onClick={onListToggle} />
-          <BoroughList isOpen={isOpen}>
-            {data?.map((item) => (
-              <BoroughButton>
-                <BoroughName key={item.id}>{item.borough}</BoroughName>
-              </BoroughButton>
-            ))}
-          </BoroughList>
-        </>
-      )}
+      <ChartButton />
+
+      <Empty />
+      <ListButton isOpen={isOpen} onClick={onListToggle} />
+      <BoroughList isOpen={isOpen}>
+        {data?.map(({ id, borough }) => (
+          <BoroughButton onClick={() => onClickBorough(borough)}>
+            <BoroughName key={id}>{borough}</BoroughName>
+          </BoroughButton>
+        ))}
+      </BoroughList>
       <ThemeToggleButton />
     </Container>
   );
 }
 
-export default React.memo(LeftMenu);
+export default React.memo(MapLeftMenu);
