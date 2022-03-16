@@ -49,12 +49,7 @@ const BarChart = ({ chartData }: { chartData: ChartData[] }) => {
           backgroundColor: "rgb(93, 98, 181)",
           plugins: {
             legend: {
-              labels: {
-                boxWidth: 10,
-                boxHeight: 10,
-                usePointStyle: true,
-                pointStyle: "rectRounded",
-              },
+              display: false,
             },
           },
         }}
