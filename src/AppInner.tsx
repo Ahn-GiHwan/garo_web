@@ -1,6 +1,5 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import ThemeToggleButton from "./components/ThemeToggleButton";
 import { useThemeState } from "./context/ThemeState";
 import Router from "./routes/Router";
 import GlobalStyles from "./style/GlobalStyles";
@@ -13,7 +12,6 @@ function AppInner() {
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <GlobalStyles />
       <Router />
-      <ThemeToggleButton />
     </ThemeProvider>
   );
 }
