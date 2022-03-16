@@ -15,9 +15,8 @@ const Container = styled.main`
 const ChartInfo = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 100%;
+  margin-top: 20px;
 `;
 
 function Chart() {
@@ -25,12 +24,16 @@ function Chart() {
     "getBoroughListChart",
     getBoroughListFetch
   );
+
   const { isLoading: chartDataLoading, data: chartData } = useQuery(
     "getCountByBorough",
     getCountByBoroughFetch
   );
 
   const [borough, setBorough] = useState("전체");
+
+  // BarChart에 전달할 데이터를 borough를 이용하여 필터링
+  const data = chartData?.filter(({ title }: { title: string }) => title === borough)[0].data;
 
   const onSelectBorough = useCallback((borough) => {
     setBorough(borough);
@@ -43,7 +46,7 @@ function Chart() {
         <LeftMenu />
         <ChartInfo>
           <BoroughList borough={borough} boroughs={boroughs} onSelectBorough={onSelectBorough} />
-          <BarChart chartData={chartData} />
+          <BarChart chartData={data} />
         </ChartInfo>
       </Container>
     );
