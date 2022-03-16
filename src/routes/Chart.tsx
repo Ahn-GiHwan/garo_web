@@ -6,7 +6,7 @@ import { getBoroughListFetch, getCountByBoroughFetch } from "../APIs/chart";
 import BarChart from "../components/Chart/BarChart";
 import BoroughList from "../components/Chart/BoroughList";
 import Loading from "../components/common/Loading";
-import LeftMenu from "../components/Map/LeftMenu";
+import ChartLeftMenu from "../components/Chart/ChartLeftMenu";
 
 const Container = styled.main`
   display: flex;
@@ -43,7 +43,7 @@ function Chart() {
   else
     return (
       <Container>
-        <LeftMenu />
+        <ChartLeftMenu />
         <ChartInfo>
           <BoroughList borough={borough} boroughs={boroughs} onSelectBorough={onSelectBorough} />
           <BarChart chartData={data} />
