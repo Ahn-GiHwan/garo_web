@@ -3,6 +3,7 @@ import styled from "styled-components";
 import MapButton from "../components/Buttons/MapButton";
 import ChartButton from "../components/Buttons/ChartButton";
 import ExcelButton from "../components/Buttons/ExcelButton";
+import ThemeToggleButton from "../components/ThemeToggleButton";
 
 const Container = styled.main`
   display: flex;
@@ -13,6 +14,7 @@ const Container = styled.main`
 `;
 
 const Main = styled.section`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -53,6 +55,7 @@ function Home() {
           <ChartButton />
         </NavIcons>
         <ExcelButton />
+        <ThemeToggleButton />
       </Main>
     </Container>
   );
