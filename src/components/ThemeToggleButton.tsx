@@ -32,7 +32,7 @@ function ThemeToggleButton() {
 
   return (
     <Button onClick={onToggle} aria-label="Theme Toggle Button">
-      {isDark ? <BsSun color="white" size="18" /> : <IoMdMoon size="18" />}
+      {isDark ? <BsSun color="white" size="18" /> : <IoMdMoon size="18" color="black" />}
     </Button>
   );
 }
