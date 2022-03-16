@@ -18,4 +18,4 @@ function ChartButton() {
   );
 }
 
-export default ChartButton;
+export default React.memo(ChartButton);

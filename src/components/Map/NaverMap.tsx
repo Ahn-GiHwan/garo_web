@@ -14,4 +14,4 @@ function NaverMap() {
   );
 }
 
-export default NaverMap;
+export default React.memo(NaverMap);

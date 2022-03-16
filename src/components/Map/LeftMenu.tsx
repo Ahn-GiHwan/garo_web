@@ -103,4 +103,4 @@ function LeftMenu({ data }: { data?: Data[] }) {
   );
 }
 
-export default LeftMenu;
+export default React.memo(LeftMenu);

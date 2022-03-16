@@ -37,4 +37,4 @@ function ThemeToggleButton() {
   );
 }
 
-export default ThemeToggleButton;
+export default React.memo(ThemeToggleButton);
