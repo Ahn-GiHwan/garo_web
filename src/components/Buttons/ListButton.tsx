@@ -5,7 +5,9 @@ import { FaList } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import MobileCheck from "../../Hooks/MobileCheck";
 
-function ListButton({ isOpen, onClick }: { isOpen: boolean; onClick?: any }) {
+type List = { isOpen: boolean; onClick?: any };
+
+function ListButton({ isOpen, onClick }: List) {
   const { isDark } = useThemeState();
   const isMobile = MobileCheck();
 
@@ -20,4 +22,4 @@ function ListButton({ isOpen, onClick }: { isOpen: boolean; onClick?: any }) {
   );
 }
 
-export default ListButton;
+export default React.memo(ListButton);
