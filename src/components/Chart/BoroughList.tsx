@@ -2,13 +2,31 @@ import React from "react";
 import styled from "styled-components";
 
 const List = styled.div`
-  width: 100%;
-  overflow-x: scroll;
+  margin: 10px;
+  padding: 10px;
+  border-bottom: 3px double gray;
+  @media screen and (max-width: 450px) {
+    margin: 5px;
+    padding: 5px;
+  }
 `;
 
 const BoroughButton = styled.button<{ select: boolean }>`
-  font-size: ${({ select }) => (select ? "20px" : "12px")};
+  margin: 5px 5px 5px 0;
+  border: 1px solid ${({ theme }) => theme.color};
+  border-radius: 10px;
+  padding: 5px;
+  background-color: ${({ select }) => select && "rgb(93, 98, 181)"};
+  color: ${({ select, theme }) => (select ? "white" : theme.color)};
+  transform: ${({ select }) => (select ? "scale(1.1)" : "scale(1)")};
+  @media screen and (max-width: 450px) {
+    margin: 3px 3px 3px 0;
+    padding: 3px;
+    font-size: 12px;
+  }
 `;
+
+const BoroughButtonText = styled.span``;
 
 type Boroughs = {
   id: number;
@@ -28,11 +46,11 @@ function BoroughList({
     <List>
       {boroughs.map(({ id, borough: name }) => (
         <BoroughButton key={id} select={borough === name} onClick={() => onSelectBorough(name)}>
-          <span>{name}</span>
+          <BoroughButtonText>{name}</BoroughButtonText>
         </BoroughButton>
       ))}
     </List>
   );
 }
 
-export default BoroughList;
+export default React.memo(BoroughList);
