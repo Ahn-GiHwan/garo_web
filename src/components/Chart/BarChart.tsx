@@ -16,7 +16,8 @@ const ChartBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
+  margin-top: 20px;
+  width: 90%;
 `;
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -43,20 +44,20 @@ const BarChart = ({ chartData }: { chartData: ChartData[] }) => {
     <ChartBox>
       <Bar
         data={data}
-        // options={{
-        //   responsive: true,
-        //   plugins: {
-        //     legend: {
-        //       labels: {
-        //         boxWidth: 10,
-        //         boxHeight: 10,
-        //         usePointStyle: true,
-        //         pointStyle: "rectRounded",
-        //       },
-        //     },
-        //   },
-        // }
-        // }
+        options={{
+          responsive: true,
+          backgroundColor: "rgb(93, 98, 181)",
+          plugins: {
+            legend: {
+              labels: {
+                boxWidth: 10,
+                boxHeight: 10,
+                usePointStyle: true,
+                pointStyle: "rectRounded",
+              },
+            },
+          },
+        }}
       />
     </ChartBox>
   );
@@ -116,4 +117,4 @@ BarChart.defaultProps = {
   ],
 };
 
-export default BarChart;
+export default React.memo(BarChart);
