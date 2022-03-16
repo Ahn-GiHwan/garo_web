@@ -7,6 +7,7 @@ import ListButton from "../Buttons/ListButton";
 import { useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import MapButton from "../Buttons/MapButton";
+import ThemeToggleButton from "../ThemeToggleButton";
 
 const Container = styled.div<{ isOpen: boolean }>`
   position: relative;
@@ -99,6 +100,7 @@ function LeftMenu({ data }: { data?: Data[] }) {
           </BoroughList>
         </>
       )}
+      <ThemeToggleButton />
     </Container>
   );
 }
