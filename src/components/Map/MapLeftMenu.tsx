@@ -72,7 +72,7 @@ type Data = {
 };
 
 function MapLeftMenu({ data, onClickBorough }: { data?: Data[]; onClickBorough: any }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const onListToggle = useCallback(() => {
     setIsOpen((prev) => !prev);
