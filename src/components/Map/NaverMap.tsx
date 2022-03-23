@@ -16,14 +16,10 @@ function NaverMap({ lat, lng }: MarkerLoc) {
         height: "100vh",
       }}
       defaultCenter={{ lat, lng }}
-      defaultZoom={14}
+      defaultZoom={15}
       center={{ lat, lng }}
     >
-      <Marker
-        position={new navermaps.LatLng(37.3595704, 127.105399)}
-        animation={0}
-        title="현재 위치"
-      />
+      <Marker position={new navermaps.LatLng(lat, lng)} animation={0} title="현재 위치" />
     </Map>
   );
 }
